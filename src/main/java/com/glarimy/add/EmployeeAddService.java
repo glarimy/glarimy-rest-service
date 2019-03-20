@@ -1,4 +1,4 @@
-package com.glarimy.rest;
+package com.glarimy.add;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableDiscoveryClient
-public class RestService {
+public class EmployeeAddService {
     public static void main(String[] args) {
-        SpringApplication.run(RestService.class, args);
+        SpringApplication.run(EmployeeAddService.class, args);
     }
 }

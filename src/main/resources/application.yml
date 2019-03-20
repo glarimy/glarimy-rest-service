@@ -1,13 +1,13 @@
 server:
-  port: 8010
-
+  port: 8082
+  
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:8001/eureka/
+      defaultZone: http://127.0.0.1:8081/eureka/
     healthcheck:
       enabled: true
     lease:
@@ -15,4 +15,4 @@ eureka:
 
 spring:
   application:
-    name: BOOK-SERVICE
+    name: GLARIMY-ADD-SERVICE

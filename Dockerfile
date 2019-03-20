@@ -1,7 +1,8 @@
-FROM openjdk:8-jdk-alpine
-MAINTAINER Krishna Mohan Koyya <krishna@glarimy.com>
-VOLUME /tmp
-EXPOSE 8010
-ARG JAR_FILE=target/rest-service-1.0.0.jar
-ADD ${JAR_FILE} rest-service-1.0.0.jar
-ENTRYPOINT ["java","-jar","/rest-service-1.0.0.jar"]
+FROM maven:3.5-jdk-8 AS build
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
+FROM gcr.io/distroless/java
+COPY --from=build /usr/src/app/target/glarimy-add-service-1.0.0.jar /usr/app/glarimy-add-service-1.0.0.jar
+EXPOSE 8082
+ENTRYPOINT ["java","-jar","glarimy-add-service-1.0.0.jar"]
